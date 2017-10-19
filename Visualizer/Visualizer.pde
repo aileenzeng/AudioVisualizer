@@ -1,9 +1,11 @@
 import processing.sound.*;
 SoundFile file;  //songs!
 Amplitude amp;  //analyzes amplitude of sound file
+float height;
 
-void setup() {
+public void setup() {
   size(800, 600);  //size of window
+  frameRate(8);
   String path = sketchPath("DEH.mp3");
   //print(path);
   file = new SoundFile(this, path);
@@ -11,22 +13,21 @@ void setup() {
 
   amp = new Amplitude(this);
   amp.input(file);
-  //check path
+  //print(file.duration());
+
 }
 
-void draw() {
+public void draw() {
   //clears screen
   background(255);
-  float size = amp.analyze() * 2000;
-  drawRect(size);
-  println(size + " " + amp.analyze());
-  
-  //rect(0, 0, size, size); 
+  height = amp.analyze();
+  drawRect();
 }
 
-void drawRect(float size) {
-  println("running");
+//draws rectangles based on the heights
+public void drawRect() {
+  fill(0, 104, 178);
   for (int i = 0; i < 8; i++) {
-    rect(100 * i, 0, 100, size);
+    rect(100 * i, 400 + height * 300 + random(-100, 100), 100, 400 - (height * 300 + random(-100, 100)));
   }
 }
