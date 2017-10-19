@@ -35,6 +35,6 @@ public void drawRect() {
   fill(0, 104, 178);
   for (int i = 0; i < 8; i++) {
     int randNum = (int)random(-100, 100);
-    rect(100 * i, 150 + height * 1500 + randNum, 100, 800 - (height * 1500 + randNum));
+    rect(100 * i, 650 - (height * 1000 + randNum), 100, 150 + height * 1000 + randNum);
   }
 }
